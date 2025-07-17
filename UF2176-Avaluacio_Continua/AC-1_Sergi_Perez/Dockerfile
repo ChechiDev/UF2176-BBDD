@@ -1,12 +1,11 @@
-FROM php:7.4-apache
-RUN a2enmod rewrite
+# Dockerfile
 
-# Creamos Group & User
-# RUN addgroup mi_wordpress && adduser -S -G mi_wordpress wordpress
-# USER wordpress  
+FROM php:7.4-apache
+
+RUN a2enmod rewrite
+RUN docker-php-ext-install mysqli
 
 WORKDIR /var/www/html
-
 COPY wordpress/ .
 
 # Permisos para Apache
